@@ -564,8 +564,8 @@ contains
       if (allocated(error) .neqv. test%should_fail) stat = stat + 1
     end if
     call junit_push_test(junit, test, error, 0.0_sp)
-    call make_output(message, test, error)
     !$omp critical(testdrive_testsuite)
+    call make_output(message, test, error)
     write(unit, '(a)') message
     !$omp end critical(testdrive_testsuite)
     if (allocated(error)) then
